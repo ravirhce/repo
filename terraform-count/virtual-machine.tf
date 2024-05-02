@@ -7,16 +7,16 @@ resource "azurerm_linux_virtual_machine" "mylinuxvm" {
   location                        = azurerm_resource_group.rg.location
   size                            = "Standard_DS1_v2"
   admin_username                  = "adminuser"
-  admin_password                  = "Admin@12345678"
-  disable_password_authentication = false
+  #admin_password                  = "Admin@12345678"
+  #disable_password_authentication = false
   network_interface_ids = [
     element(azurerm_network_interface.myvmnic[*].id, count.index)
   ]
-  /*
+
   admin_ssh_key {
     username   = "adminuser"
     public_key = file("~/.ssh/id_rsa.pub")
-  }*/
+  }
 
   os_disk {
     caching              = "ReadWrite"
